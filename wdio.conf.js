@@ -291,4 +291,5 @@ export const config = {
     */
     // afterAssertion: function(params) {
     // }
+    baseUrl: 'https://www.scouting.org/',
 }
