@@ -3,7 +3,7 @@ import Page from './page.js';
 
 class AboutPage extends Page {
     get aboutDropdn() {
-        return $('[class="eael-item-active"]');
+        return $('#menu-item-197545');
     }
     get advocatingForYouthDropdn() {
         return $('#menu-item-236109');
@@ -11,11 +11,17 @@ class AboutPage extends Page {
     get AnnualReportDropdn() {
         return $('#menu-item-171430');
     }
+    get firstDropdncarrot() {
+    return $$('[class="fas fa-angle-down"]')[0];
+    }
     get FinancialStmtsDropdn() {
         return $('#menu-item-172585');
     }
     get GovernanceDropdn() {
         return $('#menu-item-206380');
+    }
+    get secondDropdncarrot() {
+    return $$('[class="fas fa-angle-down"]')[1];
     }
     get BoyScoutsofAmericaCharterDropdn() {
         return $('#menu-item-206383');
@@ -53,7 +59,7 @@ class AboutPage extends Page {
     get LocalCouncilDropdn() {
         return $('#menu-item-172583');
     }
-    get MembershipPoicyDropdn() {
+    get MembershipPolicyDropdn() {
         return $('#menu-item-172584');
     }
     get MembershipStandardsDropdn() {
@@ -61,6 +67,9 @@ class AboutPage extends Page {
     }
     get ResearchDropdn() {
         return $('#menu-item-171244');
+    }
+    get thirdDropdncarrot() {
+    return $$('[class="fas fa-angle-down"]')[2];
     }
     get ScoutingEdgeDropdn() {
         return $('#menu-item-214112');
@@ -76,6 +85,9 @@ class AboutPage extends Page {
     }
     get YouthSafetyDropdn() {
         return $('#menu-item-171483');
+    }
+    get fourthDropdncarrot() {
+    return $$('[class="fas fa-angle-down"]')[3];
     }
     get AdultLeaderSelectionDropdn() {
         return $('#menu-item-172589');

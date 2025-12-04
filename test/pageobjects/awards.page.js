@@ -2,9 +2,6 @@ import {$} from '@wdio/globals';
 import Page from './page.js'; 
 
  class AwardsPage extends Page {
-    get awardsTab() {
-        return $('[href="https://www.scouting.org/awards/"]');
-    }
     get awardCentralDropdn() {
         return $('[href="https://www.scouting.org/awards/awards-central/"]');
     }
