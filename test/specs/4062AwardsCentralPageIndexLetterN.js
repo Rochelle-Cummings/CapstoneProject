@@ -1,9 +1,8 @@
 import { expect, browser } from '@wdio/globals';
-import awardsPage from '../pageobjects/awards.page.js';
+import AwardsPage from '../pageobjects/awards.page.js';
 
 describe('AwardsPage N items', () => {
     it('should navigate through the Awards Central page index letter N items to verify correct links', async () => {
-
         await browser.url('awards/awards-central/'); 
         await AwardsPage.nFirstIndexItem.click();
         await expect(browser).toHaveUrl('https://filestore.scouting.org/filestore/pdf/National_Duty_to_God_Award.pdf');
