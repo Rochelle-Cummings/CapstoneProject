@@ -23,7 +23,7 @@ class ProgramsPage extends Page {
     } 
     //programs page dropdown menus
     get cubScoutingOpenparagraph() {
-        return $('[class="TextRun MacChromeBold SCXW248378262 BCX0"]');
+        return $('[data-id="10728773"]');
     }
     get scoutsBSAOpenParagraph() {
         return $('[data-id="5001e34f"]');
