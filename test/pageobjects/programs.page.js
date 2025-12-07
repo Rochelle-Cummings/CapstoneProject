@@ -2,47 +2,57 @@ import {$} from '@wdio/globals';
 import Page from './page.js';   
 
 class ProgramsPage extends Page {
-    get programsTab() {
-        return $('a[id="sm-1763446414306758-1"]');
-    }
     //programs page search filters
+    get programSearchButton() {
+        return $$('[class="search-program-button"]')[0];
+    }
     get programsSearch() {
         return $('#programs-age-group-form-options');
     }
     get allAgesOption() {
-        return $('[class="form-control"]');
+        return $('[value="option-all-ages"]');
     }
     get gradeK_FiveOption() {
         return $('[value="option-k-5"]');
     }
     get ageTen_FourteenOption() {
-        return $('option[value="option-10-14]');
+        return $('select>option[value="option-10-14"]');
     }
     get ageFourteen_TwentyOption() {
-        return $('option[value="option-14-20]');
-    }
+        return $('select>option[value="option-14-20"]');
+    } 
     //programs page dropdown menus
-    dropDownWithEnding(ending) {
-        return $(`[class="pp-accordion-item option option-all-ages ${ending}"]`);
+    get cubScoutingOpenparagraph() {
+        return $('[class="TextRun MacChromeBold SCXW248378262 BCX0"]');
     }
-    get cubScoutingDropdown() {
-        return this.dropDownWithEnding("option-k-5");
+    get scoutsBSAOpenParagraph() {
+        return $('[data-id="5001e34f"]');
     }
-    get scoutsBSADropdown() {
-        return this.dropDownWithEnding("option-10-14 option-14-20"); //fix later
-    
+    get venturingOpenParagraph() {
+        return $('[data-id="4a9aff4d"]');
     }
-    //these have the same ending, so need to fix these. 
-    // get venturingDropdown() {
-    //     return this.dropDownWithEnding("option-14-20");
-    // }
-    // get seaScoutsDropdown() {
-    //     return this.dropDownWithEnding("option-14-20");
-    // }
-    get exploringDropdown() {
-        return this.dropDownWithEnding("option-10-14 option-14-20"); //fix later
+    get seaScoutsOpenParagraph() {
+        return $('[data-id="fe85486"]');
+    }
+    get exploringOpenParagraph() {
+        return $('[data-id="1e7e6211"]');
     }
 
+    get cubScoutingDropdown() {
+        return $('//div[contains(text(), "Cub Scouting")]');
+    }
+    get scoutsBSADropdown() {
+        return $('//div[contains(text(), "Scouts BSA")]');
+    }
+    get venturingDropdown() {
+        return $('//div[contains(text(), "Venturing")]');
+    }
+    get seaScoutsDropdown() {
+        return $('//div[contains(text(), "Sea Scouts")]');
+    }
+    get exploringDropdown() {
+        return $('//div[contains(text(), "Exploring")]');
+    }
 
 }
 
