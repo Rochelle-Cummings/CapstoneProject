@@ -2,6 +2,75 @@ import {$} from '@wdio/globals';
 import Page from './page.js';   
 
 class AboutPage extends Page {
+    aboutMenuSelector(name) {
+        return $(`//a[contains(text(), "${name}")]`);
+    }
+    arrayAboutMenuNames=[
+        "About Scouting America", 
+        "Advocating for Youth", 
+        "Annual Report", 
+        "Governance", 
+        "Executive Communications",
+        "Contact Scouting America", 
+        "Diversity",
+        "Frequently Asked Questions", 
+        "Connect With Us", 
+        "Local Council Locator", 
+        "Membership Policy",
+        "Membership Standards",
+        "Research", 
+        "Volunteer",
+        "Why Scouting", 
+        "Youth Safety"];
+
+    aboutURLPathways(path){
+        return browser.url(`${path}`);
+    }    
+    arrayAboutMenuLinksPaths=[
+        "about/",
+        "about/advocacy/",
+        "about/annual-report/",
+        "about/governance/",
+        "about/executive-communications/",
+        "about/contact-us/",
+        "about/diversity/",
+        "about/faq/",
+        "about/follow/",
+        "about/local-council-locator/",
+        "about/membership-policy/",
+        "about/membership-standards/",
+        "about/research/",
+        "about/volunteer/",
+        "about/why-scouting/",
+        "about/youth-safety/"];
+
+    arraySubMenuItems = {
+        annualReport:{
+            carrotSelector1: $$('[class="fas fa-angle-down"]')[0],
+            financialStatements: $('#menu-item-172585')
+        },
+        governance:{
+            carrotSelector2: $$('[class="fas fa-angle-down"]')[1],
+            boyScoutsofAmericaCharter: $('#menu-item-206383'),
+            keyThree: $('#menu-item-206384'),
+            nationalExecutiveBoard: $('#menu-item-206385'),
+            boardMemberGeographic: $('#menu-item-206381'),
+            retiringBoardMembers: $('#menu-item-206382'),
+            boardResources: $('#menu-item-235017')
+        },
+        research:{
+            carrotSelector3: $$('[class="fas fa-angle-down"]')[2],
+            scoutingEdge: $('#menu-item-214112'),
+            eagleScoutsMeritBadge: $('#menu-item-172588')
+        },
+        youthSafety:{
+            carrotSelector4: $$('[class="fas fa-angle-down"]')[3],
+            adultLeaderSelection: $('#menu-item-172589'),
+            ourCommitment: $('#menu-item-172590')
+        }
+    }
+
+
     get aboutDropdn() {
         return $('#menu-item-197545');
     }
