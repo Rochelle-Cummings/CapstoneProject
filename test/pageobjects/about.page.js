@@ -1,7 +1,8 @@
-import {$} from '@wdio/globals';
+import {$, $$, browser} from '@wdio/globals';
 import Page from './page.js';   
 
 class AboutPage extends Page {
+
     aboutMenuSelector(name) {
         return $(`//a[contains(text(), "${name}")]`);
     }
@@ -42,128 +43,106 @@ class AboutPage extends Page {
         "about/research/",
         "about/volunteer/",
         "about/why-scouting/",
-        "about/youth-safety/"];
+        "about/youth-safety/"
+    ];
+    async mainMenuTest(){
+        await browser.url('about/');
+        for (let i = 0; i < this.arrayAboutMenuNames.length; i++) {
+            const menuItem = this.aboutMenuSelector(this.arrayAboutMenuNames[i]);
+            await menuItem.click();
 
-    arraySubMenuItems = {
-        annualReport:{
-            carrotSelector1: $$('[class="fas fa-angle-down"]')[0],
-            financialStatements: $('#menu-item-172585')
-        },
-        governance:{
-            carrotSelector2: $$('[class="fas fa-angle-down"]')[1],
-            boyScoutsofAmericaCharter: $('#menu-item-206383'),
-            keyThree: $('#menu-item-206384'),
-            nationalExecutiveBoard: $('#menu-item-206385'),
-            boardMemberGeographic: $('#menu-item-206381'),
-            retiringBoardMembers: $('#menu-item-206382'),
-            boardResources: $('#menu-item-235017')
-        },
-        research:{
-            carrotSelector3: $$('[class="fas fa-angle-down"]')[2],
-            scoutingEdge: $('#menu-item-214112'),
-            eagleScoutsMeritBadge: $('#menu-item-172588')
-        },
-        youthSafety:{
-            carrotSelector4: $$('[class="fas fa-angle-down"]')[3],
-            adultLeaderSelection: $('#menu-item-172589'),
-            ourCommitment: $('#menu-item-172590')
+            const currentUrl = await browser.getUrl();
+            await expect(currentUrl).toContain(this.arrayAboutMenuLinksPaths[i])
+            await browser.url('about/');
         }
-    }
+    };
 
+    get financialStmtSelector() {
+            return $('#menu-item-172585');
+    }
+    get financialStmtPathway() {
+        return ("about/annual-report/financial-statements/");
+    }
+    governanceSelectors=[
+        "Boy Scouts of America Charter",
+        "Key 3",
+        "National Executive Board",
+        "Board Member Geographic Distribution",
+        "Retiring Board Members",
+        "Board Resources"
+    ];
 
-    get aboutDropdn() {
-        return $('#menu-item-197545');
+    researchSelectors=[
+        "The Scouting Edge: Ethics",
+        "Eagle Scouts: Merit"
+    ];
+
+    youthSafetySelectors=[
+        "Adult Leader Selection Process",
+        "Our Commitment to be Part of a Broader Solution"
+    ];
+
+    get carrotSelectors() {
+        return $$('[class="fas fa-angle-down"]');
     }
-    get advocatingForYouthDropdn() {
-        return $('#menu-item-236109');
-    }
-    get AnnualReportDropdn() {
-        return $('#menu-item-171430');
-    }
-    get firstDropdncarrot() {
-    return $$('[class="fas fa-angle-down"]')[0];
-    }
-    get FinancialStmtsDropdn() {
-        return $('#menu-item-172585');
-    }
-    get GovernanceDropdn() {
-        return $('#menu-item-206380');
-    }
-    get secondDropdncarrot() {
-    return $$('[class="fas fa-angle-down"]')[1];
-    }
-    get BoyScoutsofAmericaCharterDropdn() {
-        return $('#menu-item-206383');
-    }
-    get KeyThreeDropdn() {
-        return $('#menu-item-206384');
-    }
-    get NationalExecutiveBoardDropdn() {
-        return $('#menu-item-206385');
-    }
-    get BoardMemberGeographicDropdn() {
-        return $('#menu-item-206381');
-    }
-    get RetiringBoardMembersDropdn() {
-        return $('#menu-item-206382');
-    }
-    get BoardResourcesDropdn() {
-        return $('#menu-item-235017');
-    }
-    get ExecutiveCommmDropdn() {
-        return $('#menu-item-214803');
-    }
-    get ContactScoutingDropdn() {
-        return $('#menu-item-171387');
-    }
-    get DiversityDropdn() {
-        return $('#menu-item-171478');
-    }
-    get FAQsDropdn() {
-        return $('#menu-item-171486');
-    }
-    get ConnectWithUsDropdn() {
-        return $('#menu-item-171391');
-    }
-    get LocalCouncilDropdn() {
-        return $('#menu-item-172583');
-    }
-    get MembershipPolicyDropdn() {
-        return $('#menu-item-172584');
-    }
-    get MembershipStandardsDropdn() {
-        return $('#menu-item-171245');
-    }
-    get ResearchDropdn() {
-        return $('#menu-item-171244');
-    }
-    get thirdDropdncarrot() {
-    return $$('[class="fas fa-angle-down"]')[2];
-    }
-    get ScoutingEdgeDropdn() {
-        return $('#menu-item-214112');
-    }
-    get EagleScoutsMeritDropdn() {
-        return $('#menu-item-172588');
-    }
-    get VolunteerDropdn() {
-        return $('#menu-item-171488');
-    }
-    get WhyScoutingDropdn() {
-        return $('#menu-item-171487');
-    }
-    get YouthSafetyDropdn() {
-        return $('#menu-item-171483');
-    }
-    get fourthDropdncarrot() {
-    return $$('[class="fas fa-angle-down"]')[3];
-    }
-    get AdultLeaderSelectionDropdn() {
-        return $('#menu-item-172589');
-    }
-    get OurCommitmentDropdn() {
-        return $('#menu-item-172590');
-    }
-}    
+    
+
+    linkPathMap = [
+        {Carrot: 1, 
+        Name: "Boy Scouts of America Charter", 
+        Pathway: "about/governance/charter/",},
+        {Carrot: 1, 
+        Name: "Key 3", 
+        Pathway: "about/governance/key-three/"},
+        {Carrot: 1, 
+        Name: "National Executive Board", 
+        Pathway: "about/governance/national-executive-board/"},
+        {Carrot: 1, 
+        Name: "Board Member Geographic Distribution", 
+        Pathway: "about/governance/geographic-distribution/"},
+        {Carrot: 1, 
+        Name: "Retiring Board Members", 
+        Pathway: "about/governance/retiring-board-members/"},
+        {Carrot: 1, 
+        Name:"Board Resources", 
+        Pathway: "about/governance/resources/"},
+        {Carrot: 2, 
+        Name: "The Scouting Edge: Ethics",
+        Pathway: "about/research/the-scouting-edge-study/"},
+        {Carrot: 2, 
+        Name: "Eagle Scouts: Merit",
+        Pathway: "about/research/eagle-scouts/"},
+        {Carrot: 3, 
+        Name: "Adult Leader Selection Process",
+        Pathway: "about/youth-safety/adult-leader-selection-process/"},
+        {Carrot: 3, 
+        Name:"Our Commitment to be Part of a Broader Solution", 
+        Pathway: "about/youth-safety/our-commitment-to-be-part-of-a-broader-solution/"}
+        ];
+
+    async financialTest() {
+        await browser.url('about/');
+        const carrots = await this.carrotSelectors;
+        await carrots[0].click();
+        await this.financialStmtSelector.click();
+
+        const currentUrl = await browser.getUrl();
+        await expect(currentUrl).toContain(this.financialStmtPathway);
+        await browser.url('about/');
+    };
+
+    async secondaryMenuTest(carrot, name, pathway) {
+        for (const item of this.linkPathMap) {
+            await browser.url('about/');
+            const carrots = await this.carrotSelectors;
+            await carrots[item.Carrot].click();
+
+            await this.aboutMenuSelector(item.Name).click();
+            const currentUrl = await browser.getUrl();
+            await expect(currentUrl).toContain(item.Pathway);
+        }
+    };
+
+}
 
 export default new AboutPage();
