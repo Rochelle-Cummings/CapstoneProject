@@ -142,6 +142,34 @@ class AboutPage extends Page {
             await expect(currentUrl).toContain(item.Pathway);
         }
     };
+    async openAndCloseMenuTest(){
+        // describe('About Page Open and Close Carrot Test', () => {
+//     it('should open each dropdown with a carrot down icon and close the previous dropdown when a new one is opened', async () => {
+        await browser.url('about/');
+        await carrots[0].click();
+        await expect(this.financialStmtSelector).toBeDisplayed();
+
+        await carrots[1].click();
+        for (let i = 0; i < this.governanceSelectors.length; i++) {
+            await expect(this.aboutMenuSelector(governanceSelectors[i])).toBeDisplayed();
+            await expect(this.financialStmtSelector).not.toBeDisplayed();
+        }
+
+        await carrots[2].click();
+        for (let j = 0; j < this.researchSelectors.length; j++) {
+            await expect(this.aboutMenuSelector(this.researchSelectors[j])).toBeDisplayed();
+            await expect(this.aboutMenuSelector(this.governanceSelectors[i])).not.toBeDisplayed();
+        }
+        
+        await carrots[3].click();
+        for (let k = 0; k < this.researchSelectors.length; k++) {
+            await expect(this.aboutMenuSelector(this.youthSafetySelectors[k])).toBeDisplayed();
+            await expect(this.aboutMenuSelector(this.researchSelectors[j])).not.toBeDisplayed();
+        }
+    }
+  
+
+    
 
 }
 
