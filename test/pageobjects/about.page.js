@@ -146,6 +146,7 @@ class AboutPage extends Page {
         // describe('About Page Open and Close Carrot Test', () => {
 //     it('should open each dropdown with a carrot down icon and close the previous dropdown when a new one is opened', async () => {
         await browser.url('about/');
+        const carrots = await this.carrotSelectors;
         await carrots[0].click();
         await expect(this.financialStmtSelector).toBeDisplayed();
 
@@ -166,7 +167,7 @@ class AboutPage extends Page {
             await expect(this.aboutMenuSelector(this.youthSafetySelectors[k])).toBeDisplayed();
             await expect(this.aboutMenuSelector(this.researchSelectors[j])).not.toBeDisplayed();
         }
-    }
+    };
   
 
     
