@@ -3,65 +3,46 @@ import Page from './page.js';
 
  class AwardsPage extends Page {
 
-    awardsSelector(name) {
-        return $(`[href="https://www.awards-central/"${name}""]`);
-    }
-    // aboutMenuSelector(name) {
-    //     return $(`//a[contains(text(), "${name}")]`);
-    // }
+    awardsItemSelector(name) {
+        return $(`//a[contains(text(), "${name}")]`);
+    };
+    
     pathwayMap=[
-        {name:"/awards/awards-central/national-honor-patrol",
-        pathway:"national-honor-patrol/"
+        {Name:"Honor Patrol",
+        Pathway:"national-honor-patrol/"
         },
-        {name:"/awards/awards-central/national-major-gift",
-        pathway:"national-major-gift/"
+        {Name:"Major Gift",
+        Pathway:"national-major-gift/"
         },
-        {name:"/awards/awards-central/national-medal-outdoor",
-        pathway:"national-medal-outdoor/"
+        {Name:"National Outdoor Award",
+        Pathway:"national-medal-outdoor/"
         },
-        {name:"/awards/awards-central/nesa-life",
-        pathway:"nesa-life/"
+        {Name:"NESA Life",
+        Pathway:"nesa-life/"
         },
-        {name:"/awards/awards-central/nesa-outstanding",
-        pathway:"nesa-outstanding/"
+        {Name:"NESA Outstanding",
+        Pathway:"nesa-outstanding/"
         },
-        {name:"/awards/awards-central/north-star",
-        pathway:"north-star/"
+        {Name:"North Star",
+        Pathway:"north-star/"
         }
     ];
 
     get nationalDutyToGod() {
         return $(`//a[contains(text(), "National Duty to God")]`);
     };
-    // get nSecondIndexItem() {
-    //     return $('[href="/awards/awards-central/national-honor-patrol"]');
-    // }
-    // get nThirdIndexItem() {
-    //     return $('[href="/awards/awards-central/national-major-gift"]');
-    // }
-    // get nFourthIndexItem() {
-    //     return $('[href="/awards/awards-central/national-medal-outdoor"]');
-    // }
-    // get nFifthIndexItem() {
-    //     return $('[href="/awards/awards-central/nesa-life"]');
-    // }
-    // get nSixthIndexItem() {
-    //     return $('[href="/awards/awards-central/nesa-outstanding"]');
-    // }
-    // get nSeventhIndexItem() {
-    //     return $('[href="/awards/awards-central/north-star"]');
-    // }
+
     get novaAwards() {
         return $('[href="https://www.scouting.org/stem-nova-awards/"]');
-    }
+    };
 
     get dutyToGodAwardPathway() {
         return "National_Duty_to_God_Award";
-    }
+    };
 
     get expiredContentPathway() {
         return "expired-content/";
-    }
+    };
 
     async dutyToGodAwardTest(){
         await browser.url('awards/awards-central/');
@@ -79,14 +60,14 @@ import Page from './page.js';
         await expect(currentUrl).toContain(this.expiredContentPathway);
     };
 
-    async awardNTest(){
+    async awardNTest(name, pathway){
        for (const item of this.pathwayMap){
             await browser.url('awards/awards-central/');
-            await this.awardsSelector(item.name).click();
+            await this.awardsItemSelector(item.Name).click();
 
             const currentUrl = await browser.getUrl();
-            await expect(currentUrl).toContain(item.pathway);
-       }
+            await expect(currentUrl).toContain(item.Pathway);
+       };
     };
 
 }
