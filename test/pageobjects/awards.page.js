@@ -1,4 +1,4 @@
-import {$, browser} from '@wdio/globals';
+import {$, expect, browser} from '@wdio/globals';
 import Page from './page.js'; 
 
  class AwardsPage extends Page {
