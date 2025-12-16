@@ -37,40 +37,6 @@ class ProgramsPage extends Page {
     get exploringOpenParagraph() {
         return $('[data-id="1e7e6211"]');
     }
-
-
-
-    // programsDropDownSelector(name){
-    //     return $(`//div[contains(text(), "${name}")]`);
-    // };
-    // namesArray=[]
-    
-    // cubscoutingMap=[
-    //     "Cub Scouting",
-    //     $('[data-id="10728773"]')
-    //     ];
-
-    // bSAMap=
-    //     ["Scouts BSA",
-    //     $('[data-id="5001e34f"]')
-    //     ];
-
-    // venturingMap=[
-    //     "Venturing",
-    //     $('[data-id="4a9aff4d"]')
-    //     ];
-
-    // seaScoutsMap=[
-    //     "Sea Scouts",
-    //     $('[data-id="fe85486"]')
-    //     ];
-
-    // exploringMap=[
-    //     "Exploring",
-    //     $('[data-id="1e7e6211"]')
-    //     ];
-    
-
     get cubScoutingDropdown() {
         return $('//div[contains(text(), "Cub Scouting")]');
     }
@@ -89,26 +55,25 @@ class ProgramsPage extends Page {
 
     async openAndCloseTest(){
         await browser.url('programs/');
-        await this.programsSearch.click();
-        await this.gradeK_FiveOption.click();
-        await this.programSearchButton.click();
-        await expect(this.cubScoutingOpenparagraph).not.toBeDisplayed();
-        await expect(this.scoutsBSAOpenParagraph).not.toBeDisplayed();
-        await expect(this.venturingOpenParagraph).not.toBeDisplayed();
-        await expect(this.seaScoutsOpenParagraph).not.toBeDisplayed();
-        await expect(this.exploringOpenParagraph).not.toBeDisplayed();
-       
-        await this.cubScoutingDropdown.click();
-        await expect(this.cubScoutingOpenparagraph).toBeDisplayed();
-        await expect(this.scoutsBSAOpenParagraph).not.toBeDisplayed();
-        await expect(this.venturingOpenParagraph).not.toBeDisplayed();
-        await expect(this.seaScoutsOpenParagraph).not.toBeDisplayed();
-        await expect(this.exploringOpenParagraph).not.toBeDisplayed();
 
         await this.venturingDropdown.click();
         await expect(this.venturingOpenParagraph).toBeDisplayed();
         await expect(this.cubScoutingOpenparagraph).not.toBeDisplayed();
         await expect(this.scoutsBSAOpenParagraph).not.toBeDisplayed();
+        await expect(this.seaScoutsOpenParagraph).not.toBeDisplayed();
+        await expect(this.exploringOpenParagraph).not.toBeDisplayed();
+
+        await this.scoutsBSADropdown.click();
+        await expect(this.scoutsBSAOpenParagraph).toBeDisplayed();
+        await expect(this.cubScoutingOpenparagraph).not.toBeDisplayed();
+        await expect(this.venturingOpenParagraph).not.toBeDisplayed();
+        await expect(this.seaScoutsOpenParagraph).not.toBeDisplayed();
+        await expect(this.exploringOpenParagraph).not.toBeDisplayed();
+
+        await this.cubScoutingDropdown.click();
+        await expect(this.cubScoutingOpenparagraph).toBeDisplayed();
+        await expect(this.scoutsBSAOpenParagraph).not.toBeDisplayed();
+        await expect(this.venturingOpenParagraph).not.toBeDisplayed();
         await expect(this.seaScoutsOpenParagraph).not.toBeDisplayed();
         await expect(this.exploringOpenParagraph).not.toBeDisplayed();
 
