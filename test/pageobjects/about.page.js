@@ -1,7 +1,6 @@
-import {$, expect, browser} from '@wdio/globals';
-import Page from './page.js';   
+import {$, expect, browser} from '@wdio/globals'; 
 
-class AboutPage extends Page {
+class AboutPage {
 
     aboutMenuSelector(name) {
         return $(`//a[contains(text(), "${name}")]`);

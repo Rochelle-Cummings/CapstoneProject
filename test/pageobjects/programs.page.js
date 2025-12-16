@@ -1,7 +1,6 @@
 import {$, expect, browser} from '@wdio/globals';
-import Page from './page.js';   
 
-class ProgramsPage extends Page {
+class ProgramsPage {
     //programs page search filters
     get programSearchButton() {
         return $$('[class="search-program-button"]')[0];

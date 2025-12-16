@@ -1,7 +1,6 @@
 import {$, expect, browser} from '@wdio/globals';
-import Page from './page.js'; 
 
- class AwardsPage extends Page {
+ class AwardsPage {
 
     awardsItemSelector(name) {
         return $(`//a[contains(text(), "${name}")]`);
