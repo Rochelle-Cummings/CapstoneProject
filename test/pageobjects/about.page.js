@@ -153,19 +153,17 @@ class AboutPage {
         };
     };
 
-    async openAndCloseMenuTest(){
-        // describe('About Page Open and Close Carrot Test', () => {
-//     it('should open each dropdown with a carrot down icon and close the previous dropdown when a new one is opened', async () => {
+    async openAndCloseMenuTest() {
         await browser.url('about/');
         const carrots = await this.carrotSelectors;
         await carrots[0].click();
         await expect(this.financialStmtSelector).toBeDisplayed();
         for (let i = 0; i < this.governanceSelectors.length; i++) {
             await expect(this.aboutMenuSelector(this.governanceSelectors[i])).not.toBeDisplayed();
-        }
+        };
         for (let j = 0; j < this.researchSelectors.length; j++) {
             await expect(this.aboutMenuSelector(this.researchSelectors[j])).not.toBeDisplayed();
-        }
+        };
         for (let k = 0; k < this.youthSafetySelectors.length; k++) {
             await expect(this.aboutMenuSelector(this.youthSafetySelectors[k])).not.toBeDisplayed();
         };
@@ -176,10 +174,10 @@ class AboutPage {
             await expect(this.financialStmtSelector).not.toBeDisplayed();
             for (let j = 0; j < this.researchSelectors.length; j++) {
                 await expect(this.aboutMenuSelector(this.researchSelectors[j])).not.toBeDisplayed();
-            }
+            };
             for (let k = 0; k < this.youthSafetySelectors.length; k++) {
                 await expect(this.aboutMenuSelector(this.youthSafetySelectors[k])).not.toBeDisplayed();
-            }
+            };
         };
 
         await carrots[2].click();
@@ -187,10 +185,10 @@ class AboutPage {
             await expect(this.aboutMenuSelector(this.researchSelectors[j])).toBeDisplayed();
             for (let i = 0; i < this.governanceSelectors.length; i++) {
                 await expect(this.aboutMenuSelector(this.governanceSelectors[i])).not.toBeDisplayed();
-            }
+            };
             for (let k = 0; k < this.youthSafetySelectors.length; k++) {
                 await expect(this.aboutMenuSelector(this.youthSafetySelectors[k])).not.toBeDisplayed();
-            }  
+            }; 
             await expect(this.financialStmtSelector).not.toBeDisplayed();
         };
         
@@ -199,10 +197,10 @@ class AboutPage {
             await expect(this.aboutMenuSelector(this.youthSafetySelectors[k])).toBeDisplayed();
             for (let j = 0; j < this.researchSelectors.length; j++) {
                 await expect(this.aboutMenuSelector(this.researchSelectors[j])).not.toBeDisplayed();
-            }
+            };
             for (let i = 0; i < this.governanceSelectors.length; i++) {
                 await expect(this.aboutMenuSelector(this.governanceSelectors[i])).not.toBeDisplayed();
-            }
+            };
            await expect(this.financialStmtSelector).not.toBeDisplayed();
         };
     };
